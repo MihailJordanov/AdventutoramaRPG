@@ -1,17 +1,18 @@
-class_name State  extends Node
+class_name State_Idle extends State
 
-static var player : Player
+@onready var walk : State = $"../Walk"
 
-func  _ready():
-	pass
-	
 func Enter():
+	player.UpdateAnimation("idle")
 	pass
 	
 func Exit():
 	pass
 	
 func Process(_delta : float) -> State:
+	if player.direction != Vector2.ZERO:
+		return walk
+	player.velocity = Vector2.ZERO
 	return null
 	
 func Physics(_delta : float) -> State:
