@@ -5,6 +5,6 @@ func _ready():
 	pass
 	
 	
-func TakeDamage( _damage : int ):
+func TakeDamage( hurt_box : HurtBox ):
 	queue_free()
 	pass
