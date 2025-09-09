@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://05hpmsdknmf1" path="res://GUI/Scene_transition/scene_transition.gd" id="1_mi8ms"]
 
-[sub_resource type="Animation" id="Animation_wmabu"]
-resource_name = "default"
+[sub_resource type="Animation" id="Animation_lfx47"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -17,8 +17,8 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_lfx47"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_wmabu"]
+resource_name = "default"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
