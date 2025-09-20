@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://q73vpct1o4mn"
-path="res://.godot/imported/hit_player.wav-67b173479e79325389326a92076da67d.sample"
+uid="uid://v8rah56tx8qo"
+path="res://.godot/imported/boomerang.wav-c7121a2177351b6f3c31259ac1f5c3a4.sample"
 
 [deps]
 
-source_file="res://Player/Audio/hit_player.wav"
-dest_files=["res://.godot/imported/hit_player.wav-67b173479e79325389326a92076da67d.sample"]
+source_file="res://Player/Audio/boomerang.wav"
+dest_files=["res://.godot/imported/boomerang.wav-c7121a2177351b6f3c31259ac1f5c3a4.sample"]
 
 [params]
 

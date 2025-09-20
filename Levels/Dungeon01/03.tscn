@@ -21,6 +21,7 @@ level = "uid://cc2xo873fjysa"
 target_transition_area = "LevelTransition2"
 
 [node name="EnemyCounter" parent="." instance=ExtResource("5_yxc4f")]
+y_sort_enabled = true
 
 [node name="Slime" parent="EnemyCounter" instance=ExtResource("6_ax5fs")]
 position = Vector2(411, -63)

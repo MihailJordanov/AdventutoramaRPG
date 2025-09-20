@@ -1,0 +1,136 @@
+[gd_scene load_steps=10 format=3 uid="uid://cqtdjef4xyi2l"]
+
+[ext_resource type="Script" uid="uid://bmpphr60s4wjo" path="res://Porps/Plants/plant.gd" id="1_rm6p3"]
+[ext_resource type="AudioStream" uid="uid://yxufqcxduc3b" path="res://Porps/Audio/stone_hit.mp3" id="2_021jn"]
+[ext_resource type="Texture2D" uid="uid://cnmtx3246itsd" path="res://Porps/Sprites/TX Props.png" id="3_nvrxw"]
+[ext_resource type="Texture2D" uid="uid://mcly665m2hho" path="res://Porps/Sprites/TX Struct.png" id="3_rm6p3"]
+[ext_resource type="PackedScene" uid="uid://crhnk7knh2mr2" path="res://GeneralNodes/HitBox/hit_box.tscn" id="4_5rd6y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6w7bq"]
+size = Vector2(18, 14)
+
+[sub_resource type="Animation" id="Animation_fo7x3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_6w7bq"]
+resource_name = "take_damage"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(3.867, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.122173, 0.0, 0.122173, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1c2ke"]
+_data = {
+&"RESET": SubResource("Animation_fo7x3"),
+&"take_damage": SubResource("Animation_6w7bq")
+}
+
+[node name="EntrancePorts" type="Node2D"]
+script = ExtResource("1_rm6p3")
+is_hittble = false
+health = 10
+take_damage_sound = ExtResource("2_021jn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = -47.0
+offset_right = 20.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -30)
+texture = ExtResource("3_rm6p3")
+region_enabled = true
+region_rect = Rect2(416, 128, 64, 64)
+
+[node name="DoorSprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -20.75)
+scale = Vector2(1, 0.839623)
+texture = ExtResource("3_nvrxw")
+region_enabled = true
+region_rect = Rect2(29, 166, 37, 53)
+
+[node name="HitBox" parent="." instance=ExtResource("4_5rd6y")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-1, -6)
+shape = SubResource("RectangleShape2D_6w7bq")
+debug_color = Color(1, 0.905882, 0, 0.568627)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1c2ke")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
