@@ -1,15 +1,54 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpnxdrdlw6130"]
+[gd_scene load_steps=10 format=3 uid="uid://ofy1nj8yy0bj"]
 
-[ext_resource type="Script" uid="uid://bmpphr60s4wjo" path="res://Porps/Plants/plant.gd" id="1_6w7bq"]
-[ext_resource type="Texture2D" uid="uid://dfe34fdbwb3vy" path="res://Porps/Sprites/Props.png" id="1_l4tj6"]
-[ext_resource type="PackedScene" uid="uid://crhnk7knh2mr2" path="res://GeneralNodes/HitBox/hit_box.tscn" id="2_6w7bq"]
-[ext_resource type="AudioStream" uid="uid://cmt806dmiroxw" path="res://Porps/Audio/bush_take_dmg.mp3" id="2_fo7x3"]
+[ext_resource type="Script" uid="uid://bmpphr60s4wjo" path="res://Porps/Plants/plant.gd" id="1_b4k1j"]
+[ext_resource type="AudioStream" uid="uid://yxufqcxduc3b" path="res://Porps/Audio/stone_hit.mp3" id="2_lpbo1"]
+[ext_resource type="Texture2D" uid="uid://cnmtx3246itsd" path="res://Porps/Sprites/TX Props.png" id="3_c8g6r"]
+[ext_resource type="PackedScene" uid="uid://crhnk7knh2mr2" path="res://GeneralNodes/HitBox/hit_box.tscn" id="4_h1ta4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6w7bq"]
-size = Vector2(30, 29)
+size = Vector2(18, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fo7x3"]
-size = Vector2(24, 16)
+size = Vector2(32, 26)
+
+[sub_resource type="Animation" id="Animation_fo7x3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_6w7bq"]
 resource_name = "take_damage"
@@ -52,65 +91,27 @@ tracks/2/keys = {
 "values": [Color(1, 1, 1, 1), Color(3.867, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_fo7x3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1c2ke"]
 _data = {
 &"RESET": SubResource("Animation_fo7x3"),
 &"take_damage": SubResource("Animation_6w7bq")
 }
 
-[node name="Plant" type="Node2D"]
-script = ExtResource("1_6w7bq")
-take_damage_sound = ExtResource("2_fo7x3")
+[node name="Pillar" type="Node2D"]
+script = ExtResource("1_b4k1j")
+health = 10
+take_damage_sound = ExtResource("2_lpbo1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -9)
-texture = ExtResource("1_l4tj6")
-hframes = 16
-vframes = 3
+position = Vector2(0, -30)
+texture = ExtResource("3_c8g6r")
+region_enabled = true
+region_rect = Rect2(347, 170, 45, 84)
 
-[node name="HitBox" parent="." instance=ExtResource("2_6w7bq")]
+[node name="HitBox" parent="." instance=ExtResource("4_h1ta4")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, -6.5)
+position = Vector2(-1, -6)
 shape = SubResource("RectangleShape2D_6w7bq")
 debug_color = Color(1, 0.905882, 0, 0.568627)
 
@@ -120,7 +121,7 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 9)
+position = Vector2(-1, 4)
 shape = SubResource("RectangleShape2D_fo7x3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

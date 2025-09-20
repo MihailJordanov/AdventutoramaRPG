@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c00xw5gjmbipt" path="res://Interactables/Dungeon/barred_door.tscn" id="6_m3xjo"]
 [ext_resource type="PackedScene" uid="uid://b07i7hl6uix16" path="res://Interactables/Dungeon/pushable_statue.tscn" id="7_4dhgi"]
 
-[node name="02" type="Node2D"]
+[node name="01" type="Node2D"]
 script = ExtResource("1_bdag0")
 
 [node name="Dungeon-01" parent="." instance=ExtResource("2_2la2r")]
