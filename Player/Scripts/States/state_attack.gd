@@ -19,7 +19,7 @@ func Enter():
 	animation_player.animation_finished.connect( EndAttack )
 	
 	audio.stream = attack_sound
-	audio.pitch_scale = randf_range(8.9 , 1.1)
+	audio.pitch_scale = randf_range(0.75, 1.35)
 	audio.play()
 	
 	attacking = true
@@ -42,7 +42,7 @@ func Process(_delta : float) -> State:
 		if player.direction == Vector2.ZERO:
 			return idle
 		else:
-			return walk		
+			return walk
 	return null
 	
 func Physics(_delta : float) -> State:
