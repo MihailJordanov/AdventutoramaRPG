@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://doygeo2c73ryg" path="res://NPC/npc.tscn" id="6_8itkk"]
 [ext_resource type="Resource" uid="uid://bynwc0on03pmm" path="res://NPC/00_NPCs/npc_01.tres" id="7_th3kk"]
 [ext_resource type="PackedScene" uid="uid://bswn8oicsvl0k" path="res://NPC/npc_behaviour_wander.tscn" id="7_xhij5"]
-[ext_resource type="Resource" uid="uid://fef4xa36ad4r" path="res://NPC/00_NPCs/npc_02.tres" id="9_b60gt"]
+[ext_resource type="PackedScene" uid="uid://ek2jegbl7sv7" path="res://Enemies/Orc/orc.tscn" id="9_b60gt"]
 
 [node name="01" type="Node2D"]
 script = ExtResource("1_22ele")
@@ -37,8 +37,17 @@ npc_resource = ExtResource("7_th3kk")
 
 [node name="NpcBehaviourWander" parent="NPC" instance=ExtResource("7_xhij5")]
 
-[node name="NPC2" parent="." instance=ExtResource("6_8itkk")]
-position = Vector2(358, 118)
-npc_resource = ExtResource("9_b60gt")
+[node name="Orc" parent="." instance=ExtResource("9_b60gt")]
+position = Vector2(126, 230)
 
-[node name="NpcWanderBehaviour" parent="NPC2" instance=ExtResource("7_xhij5")]
+[node name="Orc2" parent="." instance=ExtResource("9_b60gt")]
+position = Vector2(244, 225)
+
+[node name="Orc3" parent="." instance=ExtResource("9_b60gt")]
+position = Vector2(354, 209)
+
+[node name="Orc4" parent="." instance=ExtResource("9_b60gt")]
+position = Vector2(379, 101)
+
+[node name="Orc5" parent="." instance=ExtResource("9_b60gt")]
+position = Vector2(311, 76)
