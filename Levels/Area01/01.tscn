@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://d1d0bxfcojcyl"]
+[gd_scene load_steps=12 format=4 uid="uid://d1d0bxfcojcyl"]
 
 [ext_resource type="Script" uid="uid://bjtmsbt8cjrpw" path="res://Levels/Scripts/level.gd" id="1_22ele"]
 [ext_resource type="PackedScene" uid="uid://ctdu1cqavwvn7" path="res://Tile Maps/grass-01.tscn" id="1_vbl6q"]
@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://doygeo2c73ryg" path="res://NPC/npc.tscn" id="6_8itkk"]
 [ext_resource type="Resource" uid="uid://bynwc0on03pmm" path="res://NPC/00_NPCs/npc_01.tres" id="7_th3kk"]
 [ext_resource type="PackedScene" uid="uid://bswn8oicsvl0k" path="res://NPC/npc_behaviour_wander.tscn" id="7_xhij5"]
-[ext_resource type="PackedScene" uid="uid://ek2jegbl7sv7" path="res://Enemies/Orc/orc.tscn" id="9_b60gt"]
+[ext_resource type="Resource" uid="uid://fef4xa36ad4r" path="res://NPC/00_NPCs/npc_02.tres" id="9_b60gt"]
+[ext_resource type="PackedScene" uid="uid://kc3ib3x73l8x" path="res://NPC/npc_behaviour_patrol.tscn" id="10_an23e"]
+[ext_resource type="PackedScene" uid="uid://dcepqfi311kta" path="res://NPC/patrol_location.tscn" id="11_c2gse"]
 
 [node name="01" type="Node2D"]
 script = ExtResource("1_22ele")
@@ -37,17 +39,25 @@ npc_resource = ExtResource("7_th3kk")
 
 [node name="NpcBehaviourWander" parent="NPC" instance=ExtResource("7_xhij5")]
 
-[node name="Orc" parent="." instance=ExtResource("9_b60gt")]
-position = Vector2(126, 230)
+[node name="NPC2" parent="." instance=ExtResource("6_8itkk")]
+position = Vector2(338, 117)
+npc_resource = ExtResource("9_b60gt")
 
-[node name="Orc2" parent="." instance=ExtResource("9_b60gt")]
-position = Vector2(244, 225)
+[node name="NpcBehaviourPatrol" parent="NPC2" instance=ExtResource("10_an23e")]
 
-[node name="Orc3" parent="." instance=ExtResource("9_b60gt")]
-position = Vector2(354, 209)
+[node name="PatrolLocation" parent="NPC2/NpcBehaviourPatrol" instance=ExtResource("11_c2gse")]
+modulate = Color(1, 0, 0, 1)
 
-[node name="Orc4" parent="." instance=ExtResource("9_b60gt")]
-position = Vector2(379, 101)
+[node name="PatrolLocation2" parent="NPC2/NpcBehaviourPatrol" instance=ExtResource("11_c2gse")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(55, 0)
+wait_time = 0.5
 
-[node name="Orc5" parent="." instance=ExtResource("9_b60gt")]
-position = Vector2(311, 76)
+[node name="PatrolLocation3" parent="NPC2/NpcBehaviourPatrol" instance=ExtResource("11_c2gse")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(53, 68)
+
+[node name="PatrolLocation4" parent="NPC2/NpcBehaviourPatrol" instance=ExtResource("11_c2gse")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(-6, 69)
+wait_time = 0.5
