@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://d1d0bxfcojcyl"]
+[gd_scene load_steps=14 format=4 uid="uid://d1d0bxfcojcyl"]
 
 [ext_resource type="Script" uid="uid://bjtmsbt8cjrpw" path="res://Levels/Scripts/level.gd" id="1_22ele"]
 [ext_resource type="PackedScene" uid="uid://ctdu1cqavwvn7" path="res://Tile Maps/grass-01.tscn" id="1_vbl6q"]
@@ -9,7 +9,9 @@
 [ext_resource type="Resource" uid="uid://bynwc0on03pmm" path="res://NPC/00_NPCs/npc_01.tres" id="7_th3kk"]
 [ext_resource type="PackedScene" uid="uid://bswn8oicsvl0k" path="res://NPC/npc_behaviour_wander.tscn" id="7_xhij5"]
 [ext_resource type="Resource" uid="uid://fef4xa36ad4r" path="res://NPC/00_NPCs/npc_02.tres" id="9_b60gt"]
+[ext_resource type="PackedScene" uid="uid://cwjlmx48xc8q2" path="res://Interactables/Dialog/dialog_interaction.tscn" id="9_c2gse"]
 [ext_resource type="PackedScene" uid="uid://kc3ib3x73l8x" path="res://NPC/npc_behaviour_patrol.tscn" id="10_an23e"]
+[ext_resource type="Script" uid="uid://ndxaap0j8swe" path="res://Interactables/Dialog/Scripts/dialog_text.gd" id="10_uv5ft"]
 [ext_resource type="PackedScene" uid="uid://dcepqfi311kta" path="res://NPC/patrol_location.tscn" id="11_c2gse"]
 
 [node name="01" type="Node2D"]
@@ -38,6 +40,29 @@ position = Vector2(130, 121)
 npc_resource = ExtResource("7_th3kk")
 
 [node name="NpcBehaviourWander" parent="NPC" instance=ExtResource("7_xhij5")]
+
+[node name="DialogInteraction" parent="NPC" instance=ExtResource("9_c2gse")]
+
+[node name="DialogText" type="Node" parent="NPC/DialogInteraction"]
+script = ExtResource("10_uv5ft")
+text = "
+Hi, [b]Hero[/b] is that you?"
+npc_info = ExtResource("7_th3kk")
+metadata/_custom_type_script = "uid://ndxaap0j8swe"
+
+[node name="DialogText2" type="Node" parent="NPC/DialogInteraction"]
+script = ExtResource("10_uv5ft")
+text = "
+[wave]Heck yeah It's me!"
+npc_info = ExtResource("7_th3kk")
+metadata/_custom_type_script = "uid://ndxaap0j8swe"
+
+[node name="DialogText3" type="Node" parent="NPC/DialogInteraction"]
+script = ExtResource("10_uv5ft")
+text = "Nice bro!
+Happy to have a hero!"
+npc_info = ExtResource("7_th3kk")
+metadata/_custom_type_script = "uid://ndxaap0j8swe"
 
 [node name="NPC2" parent="." instance=ExtResource("6_8itkk")]
 position = Vector2(338, 117)
